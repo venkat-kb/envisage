@@ -26,10 +26,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 export default function Page() {
   return (
-    <Card
+    <NeonGradientCard
       className="overflow-auto max-h-[90vh] max-w-[500px] mx-auto"
       x-chunk="dashboard-05-chunk-4"
     >
@@ -134,6 +135,6 @@ export default function Page() {
           );
         })}
       </CardContent>
-    </Card>
+    </NeonGradientCard>
   );
 }
