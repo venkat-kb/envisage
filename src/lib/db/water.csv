@@ -1,0 +1,60 @@
+Crude tanker,0-9999 dwt,0.02424
+Crude tanker,10000-34999 dwt,0.00691
+Crude tanker,35000-59999 dwt,0.00513
+Crude tanker,60000-99999 dwt,0.00421
+Crude tanker,100000-199999 dwt,0.00286
+Crude tanker,200000-+ dwt,0.00259
+Chemical tanker,0-4999 dwt,0.04465
+Chemical tanker,5000-9999 dwt,0.02154
+Chemical tanker,10000-19999 dwt,0.01469
+Chemical tanker,20000-39999 dwt,0.00907
+Chemical tanker,40000 + dwt,0.00697
+Container Ship,0-999 TEU,0.01982
+Container Ship,1000-1999 TEU,0.01479
+Container Ship,2000-2999 TEU,0.01053
+Container Ship,3000-4999 TEU,0.00923
+Container Ship,5000-7999 TEU,0.0088
+Container Ship,8000-11999 TEU,0.00734
+Container Ship,12000-14499 TEU,0.00578
+Container Ship,14500-19999 TEU,0.00459
+Container Ship,20000-+ TEU,0.00432
+General,0-4999 dwt,0.021
+General,5000-9999 dwt,0.01717
+General,10000-19999 dwt,0.01533
+General,20000-+ dwt,0.00788
+LPG Tanker,0-49999 cbm,0.03623
+LPG Tanker,50000-99999 cbm,0.01123
+LPG Tanker,100000-199999 cbm,0.00886
+LPG Tanker,200000-+ cbm,0.00913
+Oil Tanker,0-4999 dwt,0.06188
+Oil Tanker,5000-9999 dwt,0.03488
+Oil Tanker,10000-19999 dwt,0.02819
+Oil Tanker,20000-59999 dwt,0.01436
+Oil Tanker,60000-79999 dwt,0.00832
+Oil Tanker,80000-119999 dwt,0.00648
+Oil Tanker,120000-199999 dwt,0.00481
+Oil Tanker,200000-+ dwt,0.00302
+Other Liquid Tankers,0-999 dwt,1.00032
+Other Liquid Tankers,1000-+ dwt,0.02176
+Ferry - Pax Only,2000-+ gt,0.07214
+Ferry - Pax Only,0-1999 gt,0.80837
+Cruise,2000-9999 gt,0.28288
+Cruise,10000-59999 gt,0.08596
+Cruise,60000-99999 gt,0.09233
+Cruise,100000-149999 gt,0.08137
+Cruise,150000-+ gt,0.06647
+Ferry Ro-Pax,2000-4999 gt,0.19206
+Ferry Ro-Pax,5000-9999 gt,0.14795
+Ferry Ro-Pax,10000-19999 gt,0.09784
+Ferry Ro-Pax,20000-+ gt,0.07592
+Refrigerated,0-1999 dwt,0.11776
+Refrigerated,2000-5999 dwt,0.0615
+Refrigerated,6000-9999 dwt,0.04638
+Refrigerated,10000-+ dwt,0.03413
+Ro-Ro,0-4999 dwt,0.14525
+Ro-Ro,5000-9999 dwt,0.03575
+Ro-Ro,10000-14999 dwt,0.02986
+Ro-Ro,15000-+ dwt,0.01506
+Vehicle,0-29999 gt,0.07921
+Vehicle,30000-49999 gt,0.03861
+Vehicle,50000-+ gt,0.03121

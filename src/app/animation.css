@@ -1,0 +1,71 @@
+/* @import url('https://unpkg.com/normalize.css') layer(normalize); */
+
+@layer normalize, base, visit;
+
+.loader-5 {
+  animation: rotate 2s infinite;
+  height: 50px;
+  width: 50px;
+}
+
+.loader-5:before,
+.loader-5:after {
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+.loader-5:before {
+  animation: ball1 2s infinite;
+  background-color: rgba(0, 0, 0, 0.32);
+  box-shadow: 30px 0 0 #8f44fd;
+  margin-bottom: 10px;
+}
+.loader-5:after {
+  animation: ball2 2s infinite;
+  background-color: #8f44fd;
+  box-shadow: 30px 0 0 rgba(0, 0, 0, 0.32);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 #8f44fd;
+  }
+  50% {
+    box-shadow: 0 0 0 #8f44fd;
+    margin-bottom: 0;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #8f44fd;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 rgba(0, 0, 0, 0.32);
+  }
+  50% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.32);
+    margin-top: -20px;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 rgba(0, 0, 0, 0.32);
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,210 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex", "fullTextSearch"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Profile {
+  id             String            @id @default(cuid())
+  name           String
+  createdAt      DateTime          @default(now())
+  userId         String            @unique
+  companyAddress String            @db.VarChar(400)
+  companyName    String            @db.VarChar(400)
+  contactNumber  String
+  role           Role              @default(SHIPPER)
+  adminRole      Profile_adminRole @default(USER)
+  user           User              @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model BusinessProfile {
+  id      String @id @default(cuid())
+  name    String @db.VarChar(200)
+  address String @db.VarChar(400)
+  role    Role
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id              String            @id @default(cuid())
+  email           String            @unique
+  password        String
+  Active          Boolean           @default(true)
+  BusinessProfile BusinessProfile[]
+  Trip            Trip[]
+  Profile         Profile?
+  Shipment        Shipment[]
+  TSE             TSE[]
+  BulkShipment    BulkShipment[]
+}
+
+model Transport {
+  id       String     @id @default(cuid())
+  name     String     @db.VarChar(200)
+  Emission Emission[]
+}
+
+model Emission {
+  id          String     @id @default(cuid())
+  transportId String
+  fuelType    FUEL_TYPE
+  ladenType   LADEN_TYPE
+  co2e        Float
+  transport   Transport  @relation(fields: [transportId], references: [id])
+
+  @@index([transportId])
+}
+
+model Trip {
+  id            String   @id @default(cuid())
+  origin        String
+  destination   String
+  type          String
+  freightMethod String
+  co2e          Float
+  distance      Float
+  count         Int
+  data          Json
+  userId        String
+  from          DateTime @db.Date
+  to            DateTime @db.Date
+  referenceId   String?
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([referenceId])
+}
+
+model Airport {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(80)
+  longitude    Float
+  latitude     Float
+  iata         String  @db.VarChar(4)
+  municipality String  @db.VarChar(200)
+  body         String? @db.VarChar(500)
+
+  @@fulltext([body])
+}
+
+model WaterEmission {
+  name String @db.VarChar(21)
+  size String @db.VarChar(30)
+  id   Int    @id @default(autoincrement())
+  ttw  Float
+  wtt  Float
+}
+
+model CoastalDistances {
+  origin      String @db.VarChar(30)
+  destination String @db.VarChar(30)
+  distance    Float
+  id          Int    @id @default(autoincrement())
+}
+
+model Session {
+  id     String @id @default(cuid())
+  userId String
+
+  @@index([userId])
+}
+
+model RoadVehicle {
+  id       String @id @default(cuid())
+  type     String @db.VarChar(200)
+  ttw      Float
+  wtt      Float
+  fuel     String @db.VarChar(10)
+  capacity String @db.VarChar(10)
+}
+
+model Shipment {
+  id          String   @id @default(cuid())
+  origin      String   @db.Text
+  destination String   @db.Text
+  category    String   @db.VarChar(20)
+  method      String   @db.VarChar(60)
+  load        Float
+  from        DateTime @db.Date
+  to          DateTime @db.Date
+  userId      String
+  data        Json
+  co2e        Float
+  ttw         Float
+  wtt         Float
+  distance    Float
+  createdAt   DateTime @default(now())
+  count       Int      @default(1)
+  bulkRef     String?
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([bulkRef])
+}
+
+model BulkShipment {
+  id          String   @id @default(cuid())
+  userId      String
+  createdAt   DateTime @default(now())
+  referenceID String
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model TSE {
+  id          String   @id @default(cuid())
+  origin      String   @db.Text
+  destination String   @db.Text
+  load        Float
+  userId      String
+  createdOn   DateTime @default(now())
+  from        DateTime @db.Date
+  to          DateTime @db.Date
+  hubs        Json
+  shipment    Json
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+enum FUEL_TYPE {
+  PETROL
+  DIESEL
+  CNG
+  ELECTRIC
+  LPG
+  HYBRID
+  UNKNOWN
+}
+
+enum Role {
+  TRANSPORTER
+  SHIPPER
+}
+
+enum LADEN_TYPE {
+  EMPTY
+  HALF
+  FULL
+  AVERAGE
+  CUSTOM
+  UNKNOWN
+}
+
+enum Profile_adminRole {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
