@@ -1,10 +1,8 @@
 import {
-  AirMethods,
   FreightCategories,
   FreightMethods,
   RailwayMethods,
   RoadMethods,
-  WaterMethods,
 } from "./freight-types";
 
 export type BaseShipmentData<
@@ -63,33 +61,13 @@ export type CourierShipmentData = ExtendedShipmentData<
   }
 >;
 
-export type AirShipmentData = ExtendedShipmentData<
-  FreightCategories.AIRWAYS,
-  AirMethods.DOMESTIC | AirMethods.INTERNATIONAL,
-  {}
->;
 export type RailShipmentData = ExtendedShipmentData<
   FreightCategories.RAILWAY,
   RailwayMethods.Standard,
   {}
 >;
 
-export type CoastalShipmentData = ExtendedShipmentData<
-  FreightCategories.WATERWAYS,
-  WaterMethods.COASTAL,
-  { type: string; size: string }
->;
-
-export type InternationalWaterShipmentData = ExtendedShipmentData<
-  FreightCategories.WATERWAYS,
-  WaterMethods.INTERNATIONAL_WATER,
-  { type: string; size: string }
->;
-
 export type ShipmentData =
   | RoadShipmentData
-  | AirShipmentData
   | RailShipmentData
   | CourierShipmentData
-  | CoastalShipmentData
-  | InternationalWaterShipmentData;

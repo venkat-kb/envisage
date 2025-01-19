@@ -31,7 +31,7 @@ import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 export default function Page() {
   return (
     <NeonGradientCard
-      className="overflow-auto max-h-[90vh] max-w-[500px] mx-auto"
+      className="overflow-hidden max-h-[90vh] max-w-[500px] mx-auto"
       x-chunk="dashboard-05-chunk-4"
     >
       <CardHeader className="flex flex-row items-start bg-muted/50 pb-4">
@@ -60,7 +60,7 @@ export default function Page() {
             <ul className="grid gap-3">
               <li className="">
                 <Link
-                  href={"/dashboard/shipment/new/ewaybill"}
+                  href={"#"}
                   className="w-full flex gap-2"
                 >
                   <TooltipProvider delayDuration={100}>
